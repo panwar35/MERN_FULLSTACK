@@ -10,6 +10,7 @@ import {
   Alert,
 } from '@mui/material';
 import axios from 'axios';
+import config from '../config';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(`${config.API_URL}/api/auth/login`, formData);
       localStorage.setItem('token', res.data.token);
       navigate('/');
     } catch (err) {
